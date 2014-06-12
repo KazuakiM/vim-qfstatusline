@@ -41,7 +41,7 @@ let g:lightline = {
 \    'component_expand': {
 \        'qfstatusline': 'qfstatusline#Update',},
 \    'component_type': {
-\        'qfstatusline': 'error',},
+\        'qfstatusline': 'error',},}
 
 let g:Qfstatusline#UpdateCmd = function('lightline#update')
 ```
