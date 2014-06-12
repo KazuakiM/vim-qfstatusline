@@ -8,11 +8,11 @@ if !exists('g:Qfstatusline#UpdateCmd')
     finish
 endif
 
-function! qfstatusline#Qfstatusline()
+function! qfstatusline#Qfstatusline() "{{{
     call g:Qfstatusline#UpdateCmd()
-endfunction
+endfunction "}}}
 
-function! qfstatusline#Update()
+function! qfstatusline#Update() "{{{
     "Make statusline message
     let a:qfstatusline_message = ''
     "Setting statusline
@@ -26,7 +26,7 @@ function! qfstatusline#Update()
         endif
     endfor
     return a:qfstatusline_message
-endfunction
+endfunction "}}}
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
