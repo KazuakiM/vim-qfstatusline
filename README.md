@@ -8,7 +8,7 @@ this plugin execute statusline plugin function and statusline plugin call back t
 
 * [vimproc](https://github.com/Shougo/vimproc)
 * [vim-quickrun](https://github.com/thinca/vim-quickrun)
-* fork:[shabadou](https://github.com/KazuakiM/shabadou.vim) ([origin](https://github.com/osyo-manga/shabadou.vim))
+* [shabadou.vim](https://github.com/osyo-manga/shabadou.vim)
 * [watchdogs](https://github.com/osyo-manga/vim-watchdogs)
 
 ##Recommends
@@ -29,7 +29,7 @@ let g:quickrun_config = {
 \    'watchdogs_checker/_' : {
 \        'hook/qfstatusline_update/enable_exit':   1,
 \        'hook/qfstatusline_update/priority_exit': 4,},}
-NeoBundle 'KazuakiM/shabadou.vim'
+NeoBundle 'osyo-manga/shabadou.vim'
 NeoBundle 'osyo-manga/vim-watchdogs'
 NeoBundle 'KazuakiM/vim-qfstatusline'
 
