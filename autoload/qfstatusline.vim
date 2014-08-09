@@ -13,19 +13,16 @@ function! qfstatusline#Qfstatusline() "{{{
 endfunction "}}}
 
 function! qfstatusline#Update() "{{{
-    "Make statusline message
-    let a:qfstatusline_message = ''
     "Setting statusline
     let a:bufnr = bufnr('%')
     for a:qfrow in getqflist()
         if a:qfrow.bufnr == a:bufnr
             if a:qfrow.lnum > 0
-                let a:qfstatusline_message = 'Syntax:L'.a:qfrow.lnum
-                break
+                return 'Syntax:L'.a:qfrow.lnum
             endif
         endif
     endfor
-    return a:qfstatusline_message
+    return ''
 endfunction "}}}
 
 let &cpo = s:save_cpo
