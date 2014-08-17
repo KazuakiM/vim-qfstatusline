@@ -1,0 +1,88 @@
+*qfstatusline.txt* Set statusline at quickfix error list.
+
+Author:  KazuakiM <twitter@NanohaAsOnKai>
+License: MIT License.
+
+==============================================================================
+CONTENTS					*qfstatusline-contents*
+
+INTRODUCTION			|qfstatusline-introduction|
+INTERFACE			|qfstatusline-interface|
+  VARIABLES			  |qfstatusline-variables|
+  COMMANDS			  |qfstatusline-commands|
+  FUNCTIONS			  |qfstatusline-functions|
+USAGE				|qfstatusline-usage|
+  BASE				  |qfstatusline-base|
+  lightline.vim			  |qfstatusline-lightline.vim|
+
+==============================================================================
+INTRODUCTION					*qfstatusline-introduction*
+
+This Vim plugin is plugin supporting watchdogs.
+If watchdogs check syntax error,
+this plugin execute statusline plugin function and statusline plugin call back to get error messages.
+
+==============================================================================
+INTERFACE					*qfstatusline-interface*
+
+------------------------------------------------------------------------------
+VARIABLES					*qfstatusline-variables*
+
+(require)					*g:Qfstatusline#UpdateCmd*
+g:Qfstatusline#UpdateCmd = function({value})
+	This variable is statusline update function variable.
+
+------------------------------------------------------------------------------
+COMMANDS					*qfstatusline-commands*
+
+:QfstatuslineUpdate				*:QfstatuslineUpdate*
+	Execute |qfstatusline#Qfstatusline()| program.
+
+------------------------------------------------------------------------------
+FUNCTIONS					*qfstatusline-functions*
+
+qfstatusline#Qfstatusline()			*qfstatusline#Qfstatusline()*
+	Execute *g:Qfstatusline#UpdateCmd* function.
+
+qfstatusline#Update()				*qfstatusline#Update()*
+	return message, quickfix error list parameter {lnum}.
+
+==============================================================================
+USAGE						*qfstatusline-usage*
+
+------------------------------------------------------------------------------
+BASE						*qfstatusline-base*
+
+This setting is using quickrun.
+
+>
+	NeoBundle 'Shougo/vimproc'
+	NeoBundle 'thinca/vim-quickrun'
+	let g:quickrun_config = {
+	\    'watchdogs_checker/_' : {
+	\        'hook/qfstatusline_update/enable_exit':   1,
+	\        'hook/qfstatusline_update/priority_exit': 4,},}
+	NeoBundle 'osyo-manga/shabadou.vim'
+	NeoBundle 'osyo-manga/vim-watchdogs'
+	NeoBundle 'KazuakiM/vim-qfstatusline'
+<
+
+------------------------------------------------------------------------------
+lightline.vim					*qfstatusline-lightline.vim*
+
+This setting is using |qfstatusline-base| too.
+
+>
+	NeoBundle 'itchyny/lightline.vim'
+	let g:lightline = {
+	\    'active': {
+	\        'right': [['qfstatusline','lineinfo',],['percent',],['fileformat','fileencoding','filetype',],],},
+	\    'component_expand': {
+	\        'qfstatusline': 'qfstatusline#Update',},
+	\    'component_type': {
+	\        'qfstatusline': 'error',},}
+	let g:Qfstatusline#UpdateCmd = function('lightline#update')
+<
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl

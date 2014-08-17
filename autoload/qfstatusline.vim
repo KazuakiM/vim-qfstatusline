@@ -1,12 +1,12 @@
 let s:save_cpo = &cpo
 set cpo&vim
 
-let g:qfstatusline_enabled = ! exists('g:qfstatusline_enabled') ? 1 : g:qfstatusline_enabled
-
+"variable {{{
 if !exists('g:Qfstatusline#UpdateCmd')
     echohl ErrorMsg | echomsg "vim-qfstatusline: require 'g:Qfstatusline#UpdateCmd = function()'" | echohl None
     finish
 endif
+"}}}
 
 function! qfstatusline#Qfstatusline() "{{{
     call g:Qfstatusline#UpdateCmd()
