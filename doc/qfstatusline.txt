@@ -18,9 +18,9 @@ USAGE				|qfstatusline-usage|
 ==============================================================================
 INTRODUCTION					*qfstatusline-introduction*
 
-This Vim plugin is plugin supporting watchdogs.
-If watchdogs check syntax error,
-this plugin execute statusline plugin function and statusline plugin call back to get error messages.
+This Vim plugin is plugin supporting watchdogs. If watchdogs check syntax
+error, This plugin execute statusline plugin function and statusline plugin
+call back to get error messages.
 
 ==============================================================================
 INTERFACE					*qfstatusline-interface*
@@ -76,7 +76,8 @@ This setting is using |qfstatusline-base| too.
 	NeoBundle 'itchyny/lightline.vim'
 	let g:lightline = {
 	\    'active': {
-	\        'right': [['qfstatusline','lineinfo',],['percent',],['fileformat','fileencoding','filetype',],],},
+	\        'right': [['qfstatusline','lineinfo',],['percent',],
+	\                  ['fileformat','fileencoding','filetype',],],},
 	\    'component_expand': {
 	\        'qfstatusline': 'qfstatusline#Update',},
 	\    'component_type': {
