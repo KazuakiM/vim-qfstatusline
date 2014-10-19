@@ -14,15 +14,21 @@ endfunction "}}}
 
 function! qfstatusline#Update() "{{{
     "Setting statusline
-    let a:bufnr = bufnr('%')
+    let a:bufnr    = bufnr('%')
+    let a:errorNum = line('$')
+    let a:errorFnr = []
     for a:qfrow in getqflist()
         if a:qfrow.bufnr == a:bufnr
             if a:qfrow.lnum > 0
-                return 'Syntax:L'.a:qfrow.lnum
+                if count(a:errorFnr, a:qfrow.lnum) == 0
+                    let a:errorNum  = (a:qfrow.lnum < a:errorNum) ? a:qfrow.lnum : a:errorNum
+                    call add(a:errorFnr, a:qfrow.lnum)
+                endif
             endif
         endif
     endfor
-    return ''
+    let a:errorFnrLen = len(a:errorFnr)
+    return (a:errorFnrLen > 0) ? 'Error: L'.a:errorNum.'('.a:errorFnrLen.')' : ''
 endfunction "}}}
 
 let &cpo = s:save_cpo
