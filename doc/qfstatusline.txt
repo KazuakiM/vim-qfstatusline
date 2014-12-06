@@ -32,6 +32,11 @@ VARIABLES					*qfstatusline-variables*
 g:Qfstatusline#UpdateCmd = function({value})
 	This variable is statusline update function variable.
 
+(option)					*g:Qfstatusline#Text*
+g:Qfstatusline#Text = {vaslu}
+	This variable is quickfix text message setting. If {value} is 1,
+	show quickfix text message.
+
 ------------------------------------------------------------------------------
 COMMANDS					*qfstatusline-commands*
 
