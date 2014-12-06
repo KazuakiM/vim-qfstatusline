@@ -6,7 +6,7 @@ if !exists('g:Qfstatusline#UpdateCmd')
     echohl ErrorMsg | echomsg "vim-qfstatusline: require 'g:Qfstatusline#UpdateCmd = function()'" | echohl None
     finish
 endif
-let g:Qfstatusline#Text = ! exists('g:Qfstatusline#Text') ? 0 : g:Qfstatusline#Text
+let g:Qfstatusline#Text = ! exists('g:Qfstatusline#Text') ? 1 : g:Qfstatusline#Text
 "}}}
 function! qfstatusline#Qfstatusline() "{{{
     call g:Qfstatusline#UpdateCmd()
