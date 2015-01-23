@@ -13,8 +13,9 @@ function! qfstatusline#Qfstatusline() "{{{
 endfunction "}}}
 function! qfstatusline#Update() "{{{
     "Setting statusline
-    let a:bufnr     = bufnr('%')
-    let a:errorNum  = line('$')
+    let a:bufnr = bufnr('%')
+    "Depend on check logic. So maybe all OK.
+    let a:errorNum  = 9999
     let a:errorText = ''
     let a:errorFnr  = []
     for a:qfrow in getqflist()
@@ -27,10 +28,12 @@ function! qfstatusline#Update() "{{{
         endif
     endfor
     let a:errorFnrLen = len(a:errorFnr)
-    if (a:errorFnrLen > 0)&&(g:Qfstatusline#Text)
-        return 'L'.a:errorNum.'('.a:errorFnrLen.') M:'.a:errorText
-    elseif (a:errorFnrLen > 0)
-        return 'Error: L'.a:errorNum.'('.a:errorFnrLen.')'
+    if 0 < a:errorFnrLen
+        if g:Qfstatusline#Text
+            return 'L'.a:errorNum.'('.a:errorFnrLen.') M:'.a:errorText
+        else
+            return 'Error: L'.a:errorNum.'('.a:errorFnrLen.')'
+        endif
     endif
     return ''
 endfunction "}}}
