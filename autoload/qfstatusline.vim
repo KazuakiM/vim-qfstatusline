@@ -18,8 +18,8 @@ function! qfstatusline#Update() "{{{
     let a:errorText = ''
     let a:errorFnr  = []
     for a:qfrow in getqflist()
-        if (a:qfrow.bufnr ==# a:bufnr)&&(a:qfrow.lnum > 0)&&(count(a:errorFnr, a:qfrow.lnum) ==# 0)
-            if (a:qfrow.lnum < a:errorNum)
+        if a:qfrow.bufnr ==# a:bufnr && 0 < a:qfrow.lnum && count(a:errorFnr, a:qfrow.lnum) ==# 0
+            if a:qfrow.lnum <= a:errorNum
                 let a:errorNum  = a:qfrow.lnum
                 let a:errorText = a:qfrow.text
             endif
