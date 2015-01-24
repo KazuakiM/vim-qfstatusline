@@ -13,7 +13,8 @@ INTERFACE			|qfstatusline-interface|
   FUNCTIONS			  |qfstatusline-functions|
 USAGE				|qfstatusline-usage|
   BASE				  |qfstatusline-base|
-  lightline.vim			  |qfstatusline-lightline.vim|
+  DEFAULT			  |qfstatusline-default|
+  LIGHTLINE.VIM			  |qfstatusline-lightline.vim|
 
 ==============================================================================
 INTRODUCTION					*qfstatusline-introduction*
@@ -73,7 +74,22 @@ This setting is using quickrun.
 <
 
 ------------------------------------------------------------------------------
-lightline.vim					*qfstatusline-lightline.vim*
+DEFAULT						*qfstatusline-default*
+
+This setting is using |qfstatusline-base| too.
+
+>
+	function! StatuslineUpldate()
+	    return qfstatusline#Update()
+	endfunction
+	let g:Qfstatusline#UpdateCmd = function('StatuslineUpldate')
+	set statusline=\ %{mode()}\ \|\ %t\ %m\ %r\ %h\ %w\ %q\ 
+	set statusline+=%{StatuslineUpldate()}%=\|\ %Y\ \|\ %{&fileformat}\ 
+	set statusline+=\|\ %{&fileencoding}\ 
+<
+
+------------------------------------------------------------------------------
+LIGHTLINE.VIM					*qfstatusline-lightline.vim*
 
 This setting is using |qfstatusline-base| too.
 
@@ -81,12 +97,11 @@ This setting is using |qfstatusline-base| too.
 	NeoBundle 'itchyny/lightline.vim'
 	let g:lightline = {
 	\    'active': {
-	\        'right': [['qfstatusline','lineinfo',],['percent',],
-	\                  ['fileformat','fileencoding','filetype',],],},
-	\    'component_expand': {
-	\        'qfstatusline': 'qfstatusline#Update',},
-	\    'component_type': {
-	\        'qfstatusline': 'error',},}
+	\        'left':  [['mode','paste'],['filename','qfstatusline']],
+	\        'right': [['lineinfo'],['percent'],
+	\                  ['fileformat','fileencoding','filetype']]},
+	\    'component_expand': {'qfstatusline': 'qfstatusline#Update'},
+	\    'component_type':   {'qfstatusline': 'error'}}
 	let g:Qfstatusline#UpdateCmd = function('lightline#update')
 <
 

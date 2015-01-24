@@ -15,8 +15,8 @@ this plugin execute statusline plugin function and statusline plugin call back t
 
 * [lightline](https://github.com/itchyny/lightline.vim)
 
-##Installation
-###Sample setting.
+##Usage
+###Installation
 
 Sample setting is using [NeoBundle](https://github.com/Shougo/neobundle.vim).  
 This setting is not working. However it's plugins setting hint.  
@@ -32,17 +32,28 @@ let g:quickrun_config = {
 NeoBundle 'osyo-manga/shabadou.vim'
 NeoBundle 'osyo-manga/vim-watchdogs'
 NeoBundle 'KazuakiM/vim-qfstatusline'
+```
 
-"Recommends plugin setting
+###default statusline setting
+
+```vim
+function! StatuslineUpldate()
+    return qfstatusline#Update()
+endfunction
+let g:Qfstatusline#UpdateCmd = function('StatuslineUpldate')
+set statusline=\ %{mode()}\ \|\ %t\ %m\ %r\ %h\ %w\ %q\ %{StatuslineUpldate()}%=\|\ %Y\ \|\ %{&fileformat}\ \|\ %{&fileencoding}\ 
+```
+
+###lightline.vim setting
+
+```vim
 NeoBundle 'itchyny/lightline.vim'
 let g:lightline = {
 \    'active': {
-\        'right': [ [ 'qfstatusline', 'lineinfo' ], [ 'percent' ], [ 'fileformat', 'fileencoding', 'filetype' ] ],},
-\    'component_expand': {
-\        'qfstatusline': 'qfstatusline#Update',},
-\    'component_type': {
-\        'qfstatusline': 'error',},}
-
+\        'left':  [['mode','paste'],['filename','qfstatusline']],
+\        'right': [['lineinfo'],['percent'],['fileformat','fileencoding','filetype']]},
+\    'component_expand': {'qfstatusline': 'qfstatusline#Update'},
+\    'component_type':   {'qfstatusline': 'error'}}
 let g:Qfstatusline#UpdateCmd = function('lightline#update')
 ```
 
