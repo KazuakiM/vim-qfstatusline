@@ -37,11 +37,11 @@ NeoBundle 'KazuakiM/vim-qfstatusline'
 ###default statusline setting
 
 ```vim
-function! StatuslineUpldate()
+function! StatuslineUpdate()
     return qfstatusline#Update()
 endfunction
-let g:Qfstatusline#UpdateCmd = function('StatuslineUpldate')
-set statusline=\ %{mode()}\ \|\ %t\ %m\ %r\ %h\ %w\ %q\ %{StatuslineUpldate()}%=\|\ %Y\ \|\ %{&fileformat}\ \|\ %{&fileencoding}\ 
+let g:Qfstatusline#UpdateCmd = function('StatuslineUpdate')
+set statusline=\ %{mode()}\ \|\ %t\ %m\ %r\ %h\ %w\ %q\ %{StatuslineUpdate()}%=\|\ %Y\ \|\ %{&fileformat}\ \|\ %{&fileencoding}\ 
 ```
 
 ###lightline.vim setting

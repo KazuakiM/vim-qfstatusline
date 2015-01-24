@@ -79,12 +79,12 @@ DEFAULT						*qfstatusline-default*
 This setting is using |qfstatusline-base| too.
 
 >
-	function! StatuslineUpldate()
+	function! StatuslineUpdate()
 	    return qfstatusline#Update()
 	endfunction
-	let g:Qfstatusline#UpdateCmd = function('StatuslineUpldate')
+	let g:Qfstatusline#UpdateCmd = function('StatuslineUpdate')
 	set statusline=\ %{mode()}\ \|\ %t\ %m\ %r\ %h\ %w\ %q\ 
-	set statusline+=%{StatuslineUpldate()}%=\|\ %Y\ \|\ %{&fileformat}\ 
+	set statusline+=%{StatuslineUpdate()}%=\|\ %Y\ \|\ %{&fileformat}\ 
 	set statusline+=\|\ %{&fileencoding}\ 
 <
 
