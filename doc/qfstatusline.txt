@@ -4,7 +4,7 @@ Author:  KazuakiM <twitter@NanohaAsOnKai>
 License: MIT License.
 
 ==============================================================================
-CONTENTS					*qfstatusline-contents*
+CONTENTS										*qfstatusline-contents*
 
 INTRODUCTION			|qfstatusline-introduction|
 INTERFACE			|qfstatusline-interface|
@@ -17,47 +17,47 @@ USAGE				|qfstatusline-usage|
   LIGHTLINE.VIM			  |qfstatusline-lightline.vim|
 
 ==============================================================================
-INTRODUCTION					*qfstatusline-introduction*
+INTRODUCTION									*qfstatusline-introduction*
 
 This Vim plugin is plugin supporting watchdogs. If watchdogs check syntax
 error, This plugin execute statusline plugin function and statusline plugin
 call back to get error messages.
 
 ==============================================================================
-INTERFACE					*qfstatusline-interface*
+INTERFACE										*qfstatusline-interface*
 
 ------------------------------------------------------------------------------
-VARIABLES					*qfstatusline-variables*
+VARIABLES										*qfstatusline-variables*
 
-(require)					*g:Qfstatusline#UpdateCmd*
-g:Qfstatusline#UpdateCmd = function({value})
+(require)
+g:Qfstatusline#UpdateCmd = function({value})	*g:Qfstatusline#UpdateCmd*
 	This variable is statusline update function variable.
 
-(option)					*g:Qfstatusline#Text*
-g:Qfstatusline#Text = {vaslu}
+(option)
+g:Qfstatusline#Text = {vaslu}					*g:Qfstatusline#Text*
 	This variable is quickfix text message setting. If {value} is 1,
 	show quickfix text message.
 
 ------------------------------------------------------------------------------
-COMMANDS					*qfstatusline-commands*
+COMMANDS										*qfstatusline-commands*
 
-:QfstatuslineUpdate				*:QfstatuslineUpdate*
+:QfstatuslineUpdate								*:QfstatuslineUpdate*
 	Execute |qfstatusline#Qfstatusline()| program.
 
 ------------------------------------------------------------------------------
-FUNCTIONS					*qfstatusline-functions*
+FUNCTIONS										*qfstatusline-functions*
 
-qfstatusline#Qfstatusline()			*qfstatusline#Qfstatusline()*
-	Execute *g:Qfstatusline#UpdateCmd* function.
+qfstatusline#Qfstatusline()						*qfstatusline#Qfstatusline()*
+	Execute |g:Qfstatusline#UpdateCmd| function.
 
-qfstatusline#Update()				*qfstatusline#Update()*
+qfstatusline#Update()							*qfstatusline#Update()*
 	return message, quickfix error list parameter {lnum}.
 
 ==============================================================================
-USAGE						*qfstatusline-usage*
+USAGE											*qfstatusline-usage*
 
 ------------------------------------------------------------------------------
-BASE						*qfstatusline-base*
+BASE											*qfstatusline-base*
 
 This setting is using quickrun.
 
@@ -74,7 +74,7 @@ This setting is using quickrun.
 <
 
 ------------------------------------------------------------------------------
-DEFAULT						*qfstatusline-default*
+DEFAULT											*qfstatusline-default*
 
 This setting is using |qfstatusline-base| too.
 
@@ -89,7 +89,7 @@ This setting is using |qfstatusline-base| too.
 <
 
 ------------------------------------------------------------------------------
-LIGHTLINE.VIM					*qfstatusline-lightline.vim*
+LIGHTLINE.VIM									*qfstatusline-lightline.vim*
 
 This setting is using |qfstatusline-base| too.
 
