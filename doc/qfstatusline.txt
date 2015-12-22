@@ -34,7 +34,7 @@ g:Qfstatusline#UpdateCmd = function({value})	*g:Qfstatusline#UpdateCmd*
 	This variable is statusline update function variable.
 
 (option)
-g:Qfstatusline#Text = {vaslu}			*g:Qfstatusline#Text*
+g:Qfstatusline#Text = {value}			*g:Qfstatusline#Text*
 	This variable is quickfix text message setting. If {value} is 1,
 	show quickfix text message.
 
