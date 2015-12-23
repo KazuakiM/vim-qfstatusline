@@ -1,7 +1,7 @@
 #vim-qfstatusline
 
-This Vim plugin is plugin supporting [watchdogs](https://github.com/osyo-manga/vim-watchdogs).  
-If [watchdogs](https://github.com/osyo-manga/vim-watchdogs) check syntax error,  
+This Vim plugin is plugin supporting [watchdogs](https://github.com/osyo-manga/vim-watchdogs).
+If [watchdogs](https://github.com/osyo-manga/vim-watchdogs) check syntax error,
 this plugin execute statusline plugin function and statusline plugin call back to get error messages.
 
 ##Requirement
@@ -18,8 +18,8 @@ this plugin execute statusline plugin function and statusline plugin call back t
 ##Usage
 ###Installation
 
-Sample setting is using [NeoBundle](https://github.com/Shougo/neobundle.vim).  
-This setting is not working. However it's plugins setting hint.  
+Sample setting is using [NeoBundle](https://github.com/Shougo/neobundle.vim).
+This setting is not working. However it's plugins setting hint.
 Please check Requirement plugins's READE.md. thanx :)
 
 ```vim
@@ -41,7 +41,7 @@ function! StatuslineUpdate()
     return qfstatusline#Update()
 endfunction
 let g:Qfstatusline#UpdateCmd = function('StatuslineUpdate')
-set statusline=\ %{mode()}\ \|\ %t\ %m\ %r\ %h\ %w\ %q\ %{StatuslineUpdate()}%=\|\ %Y\ \|\ %{&fileformat}\ \|\ %{&fileencoding}\ 
+set statusline=\ %{mode()}\ \|\ %t\ %m\ %r\ %h\ %w\ %q\ %{StatuslineUpdate()}%=\|\ %Y\ \|\ %{&fileformat}\ \|\ %{&fileencoding}\
 ```
 
 ###lightline.vim setting
@@ -55,6 +55,17 @@ let g:lightline = {
 \    'component_expand': {'qfstatusline': 'qfstatusline#Update'},
 \    'component_type':   {'qfstatusline': 'error'}}
 let g:Qfstatusline#UpdateCmd = function('lightline#update')
+```
+
+#### using also quickfix window
+You need to add `'hook/back_window/enable_exit' : 1` , when using quickfix window with lightline.vim.
+
+```vim
+let g:quickrun_config = {
+\    'watchdogs_checker/_' : {
+\        'hook/back_window/enable_exit' : 1,
+\        'hook/qfstatusline_update/enable_exit':   1,
+\        'hook/qfstatusline_update/priority_exit': 4,},}
 ```
 
 ## Author
