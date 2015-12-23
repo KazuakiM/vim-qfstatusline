@@ -1,6 +1,6 @@
 #vim-qfstatusline
 
-This Vim plugin is plugin supporting [watchdogs](https://github.com/osyo-manga/vim-watchdogs).
+This Vim plugin is plugin supporting [watchdogs](https://github.com/osyo-manga/vim-watchdogs).  
 If [watchdogs](https://github.com/osyo-manga/vim-watchdogs) check syntax error,
 this plugin execute statusline plugin function and statusline plugin call back to get error messages.
 
@@ -18,17 +18,19 @@ this plugin execute statusline plugin function and statusline plugin call back t
 ##Usage
 ###Installation
 
-Sample setting is using [NeoBundle](https://github.com/Shougo/neobundle.vim).
-This setting is not working. However it's plugins setting hint.
-Please check Requirement plugins's READE.md. thanx :)
+Sample setting is using [NeoBundle](https://github.com/Shougo/neobundle.vim).  
+If you want to use quickfix window, you can check [here](https://github.com/KazuakiM/vim-qfstatusline/blob/master/README.md#using-also-quickfix-window).
 
 ```vim
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'thinca/vim-quickrun'
 let g:quickrun_config = {
 \    'watchdogs_checker/_' : {
+\        'hook/close_quickfix/enable_exit':        1,
+\        'hook/back_window/enable_exit':           0,
+\        'hook/back_window/priority_exit':         1,
 \        'hook/qfstatusline_update/enable_exit':   1,
-\        'hook/qfstatusline_update/priority_exit': 4,},}
+\        'hook/qfstatusline_update/priority_exit': 2,},}
 NeoBundle 'osyo-manga/shabadou.vim'
 NeoBundle 'osyo-manga/vim-watchdogs'
 NeoBundle 'KazuakiM/vim-qfstatusline'
@@ -41,7 +43,7 @@ function! StatuslineUpdate()
     return qfstatusline#Update()
 endfunction
 let g:Qfstatusline#UpdateCmd = function('StatuslineUpdate')
-set statusline=\ %{mode()}\ \|\ %t\ %m\ %r\ %h\ %w\ %q\ %{StatuslineUpdate()}%=\|\ %Y\ \|\ %{&fileformat}\ \|\ %{&fileencoding}\
+set statusline=\ %{mode()}\ \|\ %t\ %m\ %r\ %h\ %w\ %q\ %{StatuslineUpdate()}%=\|\ %Y\ \|\ %{&fileformat}\ \|\ %{&fileencoding}\ 
 ```
 
 ###lightline.vim setting
@@ -57,15 +59,14 @@ let g:lightline = {
 let g:Qfstatusline#UpdateCmd = function('lightline#update')
 ```
 
-#### using also quickfix window
-You need to add `'hook/back_window/enable_exit' : 1` , when using quickfix window with lightline.vim.
+####using also quickfix window
 
 ```vim
 let g:quickrun_config = {
 \    'watchdogs_checker/_' : {
-\        'hook/back_window/enable_exit' : 1,
+\        'hook/back_window/enable_exit' :          1,
 \        'hook/qfstatusline_update/enable_exit':   1,
-\        'hook/qfstatusline_update/priority_exit': 4,},}
+\        'hook/qfstatusline_update/priority_exit': 1,},}
 ```
 
 ## Author

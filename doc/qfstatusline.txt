@@ -15,6 +15,7 @@ USAGE				|qfstatusline-usage|
   BASE				  |qfstatusline-base|
   DEFAULT			  |qfstatusline-default|
   LIGHTLINE.VIM			  |qfstatusline-lightline.vim|
+  QUICKFIX WINDOW		  |qfstatusline-quickfix-window|
 
 ==============================================================================
 INTRODUCTION					*qfstatusline-introduction*
@@ -59,15 +60,19 @@ USAGE						*qfstatusline-usage*
 ------------------------------------------------------------------------------
 BASE						*qfstatusline-base*
 
-This setting is using quickrun.
+If you want to use quickfix window, you can check
+|qfstatusline-quickfix-window|.
 
 >
 	NeoBundle 'Shougo/vimproc'
 	NeoBundle 'thinca/vim-quickrun'
 	let g:quickrun_config = {
 	\    'watchdogs_checker/_' : {
+	\        'hook/close_quickfix/enable_exit':        1,
+	\        'hook/back_window/enable_exit':           0,
+	\        'hook/back_window/priority_exit':         1,
 	\        'hook/qfstatusline_update/enable_exit':   1,
-	\        'hook/qfstatusline_update/priority_exit': 4,},}
+	\        'hook/qfstatusline_update/priority_exit': 2,},}
 	NeoBundle 'osyo-manga/shabadou.vim'
 	NeoBundle 'osyo-manga/vim-watchdogs'
 	NeoBundle 'KazuakiM/vim-qfstatusline'
@@ -76,7 +81,7 @@ This setting is using quickrun.
 ------------------------------------------------------------------------------
 DEFAULT						*qfstatusline-default*
 
-This setting is using |qfstatusline-base| too.
+This setting is using |qfstatusline-base| or |qfstatusline-quickfix-window| too.
 
 >
 	function! StatuslineUpdate()
@@ -91,7 +96,7 @@ This setting is using |qfstatusline-base| too.
 ------------------------------------------------------------------------------
 LIGHTLINE.VIM					*qfstatusline-lightline.vim*
 
-This setting is using |qfstatusline-base| too.
+This setting is using |qfstatusline-base| or |qfstatusline-quickfix-window| too.
 
 >
 	NeoBundle 'itchyny/lightline.vim'
@@ -103,6 +108,20 @@ This setting is using |qfstatusline-base| too.
 	\    'component_expand': {'qfstatusline': 'qfstatusline#Update'},
 	\    'component_type':   {'qfstatusline': 'error'}}
 	let g:Qfstatusline#UpdateCmd = function('lightline#update')
+<
+------------------------------------------------------------------------------
+QUICKFIX WINDOW					*qfstatusline-quickfix-window*
+
+>
+	NeoBundle 'Shougo/vimproc'
+	NeoBundle 'thinca/vim-quickrun'
+	\    'watchdogs_checker/_' : {
+	\        'hook/back_window/enable_exit' :          1,
+	\        'hook/qfstatusline_update/enable_exit':   1,
+	\        'hook/qfstatusline_update/priority_exit': 1,},}
+	NeoBundle 'osyo-manga/shabadou.vim'
+	NeoBundle 'osyo-manga/vim-watchdogs'
+	NeoBundle 'KazuakiM/vim-qfstatusline'
 <
 
 ==============================================================================
