@@ -11,7 +11,8 @@ let s:checkDict         = ! exists('s:checkDict')         ? {'check': 0, 'text':
 "}}}
 function! qfstatusline#Qfstatusline() abort "{{{
     let s:checkDict = {'check': 1, 'text': ''}
-    call g:Qfstatusline#UpdateCmd()
+
+    return g:Qfstatusline#UpdateCmd()
 endfunction "}}}
 function! qfstatusline#Update() abort "{{{
     if s:checkDict.check ==# 0

@@ -1,5 +1,7 @@
 #vim-qfstatusline
 
+[![Build Status](https://travis-ci.org/KazuakiM/vim-qfstatusline.svg)](https://travis-ci.org/KazuakiM/vim-qfstatusline)
+
 This Vim plugin is plugin supporting [watchdogs](https://github.com/osyo-manga/vim-watchdogs).  
 If [watchdogs](https://github.com/osyo-manga/vim-watchdogs) check syntax error,
 this plugin execute statusline plugin function and statusline plugin call back to get error messages.
