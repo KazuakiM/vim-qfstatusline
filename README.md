@@ -1,6 +1,10 @@
 #vim-qfstatusline
 
-[![Build Status](https://travis-ci.org/KazuakiM/vim-qfstatusline.svg)](https://travis-ci.org/KazuakiM/vim-qfstatusline)
+[![](https://img.shields.io/travis/KazuakiM/vim-qfstatusline.svg)](https://travis-ci.org/KazuakiM/vim-qfstatusline)
+[![Build status](https://ci.appveyor.com/api/projects/status/lte1vdem9lmsyjo3/branch/master?svg=true)](https://ci.appveyor.com/project/KazuakiM/vim-qfstatusline/branch/master)
+[![](https://img.shields.io/github/issues/KazuakiM/vim-qfstatusline.svg)](https://github.com/KazuakiM/vim-qfstatusline/issues)
+[![](https://img.shields.io/badge/doc-%3Ah%20qfstatusline.txt-blue.svg)](doc/qfstatusline.txt)
+[![](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 This Vim plugin is plugin supporting [watchdogs](https://github.com/osyo-manga/vim-watchdogs).  
 If [watchdogs](https://github.com/osyo-manga/vim-watchdogs) check syntax error,
