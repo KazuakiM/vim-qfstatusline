@@ -6,7 +6,14 @@ function! qfstatusline#UpdateTests() abort "{{{
     return qfstatusline#Update()
 endfunction "}}}
 
+function! s:suite.before_each() abort "{{{
+    call setqflist([])
+    call qfstatusline#Update()
+endfunction "}}}
+
 function! s:suite.QfstatuslineText() abort "{{{
+    let g:Qfstatusline#Text = 1
+
     call s:assert.equals(qfstatusline#Qfstatusline(), '')
     call s:assert.equals(qfstatusline#Update(),       '')
 
@@ -57,4 +64,3 @@ function! s:suite.QfstatuslineNoneText() abort "{{{
     call s:assert.equals(qfstatusline#Qfstatusline(), '')
     call s:assert.equals(qfstatusline#Update(),       '')
 endfunction "}}}
-
